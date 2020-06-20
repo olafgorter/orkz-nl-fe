@@ -11,7 +11,7 @@ export class AdministratorService {
 
   constructor(private http: HttpClient) { }
 
-  getUserList(): Observable<any> {
-    return this.http.post(environment.apiUrl + '/administrator/getUsers', { });
+  getResidentList(){
+    return this.http.post(environment.apiUrl + '/administrator/getResidents', { });
   }
 }

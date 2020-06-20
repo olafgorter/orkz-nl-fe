@@ -1,6 +1,6 @@
 import { Resident } from './resident';
 
-export interface User {
+export class User {
     id?: number;
     username: String;
     password: String;

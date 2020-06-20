@@ -1,5 +1,5 @@
 
-export interface Resident {
+export class Resident {
     id?: number;
     fullName: String;
     bankAccount: String;
