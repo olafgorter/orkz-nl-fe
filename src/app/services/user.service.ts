@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
-import { User } from './model/user';
+import { environment } from '../../environments/environment';
+import { User } from '../model/user';
 
 
 
@@ -21,5 +21,10 @@ export class UserService {
 
   login(username: String, password: String): Observable<any> {
     return this.http.post(environment.apiUrl + '/user/login', { username: username, password: password });
+  }
+
+  getAllUsers(){
+    return this.http.post(environment.apiUrl + '/user/getallusers', { });
+
   }
 }

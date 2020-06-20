@@ -1,3 +1,5 @@
+import { Resident } from './resident';
+
 export interface User {
     id?: number;
     username: String;
@@ -5,4 +7,5 @@ export interface User {
     email: String;
     version?: number;
 
+    resident: Resident;
   }

@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { AdministratorComponent } from './administrator/administrator.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { AppRoutingModule } from './app-routing.module';
     LoginComponent,
     MessagesComponent,
     DashboardComponent,
+    AdministratorComponent,
   ],
   imports: [
     BrowserModule,
