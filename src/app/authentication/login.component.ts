@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../model/user';
 import { UserService } from '../user.service';
 import { MessageService } from '../message.service';
-import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
-import * as _ from 'lodash';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +18,10 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private messageService: MessageService, public userService: UserService, private formBuilder: FormBuilder) { }
+  title = "ORKZ NL";
+
+  constructor(private messageService: MessageService, public userService: UserService, 
+              private router:Router, private route: ActivatedRoute, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -32,12 +34,11 @@ export class LoginComponent implements OnInit {
     console.log("login start");
     let username = this.loginForm.value.username;
     let password = this.loginForm.value.password;
-    console.log(username);
-    console.log(password);
     let loginObservable = this.userService.login(username, password);
     loginObservable.subscribe((res) => {
-      this.message = res;
-      this.messageService.add(this.message.result);
+      // this.message = res;
+      // this.messageService.add(this.message.result);
+      this.router.navigateByUrl('/dashboard');
     }, (err) => {
       console.log("error:", err);
     });

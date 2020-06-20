@@ -1,13 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { catchError, tap, switchMap, map } from 'rxjs/operators';
-import { throwError as observableThrowError } from 'rxjs';
-import { Observable, BehaviorSubject } from 'rxjs';
-//import { Router } from '@angular/router';
-
+import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 import { User } from './model/user';
 
-import { environment } from '../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
