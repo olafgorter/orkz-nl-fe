@@ -3,9 +3,9 @@ import { UserRole } from './userrole';
 
 export class User {
     id?: number;
-    username: String;
-    password: String;
-    email: String;
+    username: string;
+    password: string;
+    email: string;
     version?: number;
 
     resident: Resident;

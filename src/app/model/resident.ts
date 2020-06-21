@@ -1,9 +1,11 @@
+import { Room } from './room';
 
 export class Resident {
     id?: number;
-    fullName: String;
-    bankAccount: String;
+    fullName: string;
+    bankAccount: string;
     version?: number;
 
-    // room: Room;
+    room: Room;
+    
   }
