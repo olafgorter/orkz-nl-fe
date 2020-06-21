@@ -31,27 +31,16 @@ export class LoginComponent implements OnInit {
               private authenticationService: AuthenticationService, private tokenStorageService: TokenStorageService) { }
 
   ngOnInit() {
+
+    if(this.tokenStorageService.getUser()){
+      this.router.navigate(['dashboard']);
+    }
+
     this.loginForm = this.formBuilder.group({
       username: [null, Validators.required],
       password: [null, Validators.required],
     });
   }
-
-  // login(): void {
-  //   console.log("login start");
-  //   let username = this.loginForm.value.username;
-  //   let password = this.loginForm.value.password;
-    
-  //   let loginObservable = this.userService.login(username, password);
-  //   loginObservable.subscribe((res) => {
-  //     // this.message = res;
-  //     // this.messageService.add(this.message.result);
-  //     this.router.navigateByUrl('/dashboard');
-  //   }, (err) => {
-  //     console.log("error:", err);
-  //   });
-  //   console.log("login end");   
-  // }
 
   login(){
     let lf = this.loginForm.value;
@@ -73,7 +62,6 @@ export class LoginComponent implements OnInit {
       // console.log("getUser end");
 
       window.location.reload();
-      this.router.navigate(['dashboard']);
     }, (err) => {
       console.log(err);
     });  

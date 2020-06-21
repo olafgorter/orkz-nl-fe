@@ -25,7 +25,12 @@ export class AppComponent implements OnInit{
 
   logout(){
     this.authenticationService.logout();
+    this.delay(1000);
     window.location.reload();
-    this.router.navigate(['login']);
   }
+
+  delay(ms: number) {
+    return new Promise( resolve => setTimeout(resolve, ms) );
+  }
+
 }

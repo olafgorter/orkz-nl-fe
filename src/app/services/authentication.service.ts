@@ -174,7 +174,6 @@ export class AuthenticationService implements AuthService {
  
   public isAdmin() {
     if(!this.tokenStorageService.getUser()){
-      console.log("No user?");
       return false;
     }
     
