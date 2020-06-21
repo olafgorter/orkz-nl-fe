@@ -1,4 +1,5 @@
 import { Resident } from './resident';
+import { UserRole } from './userrole';
 
 export class User {
     id?: number;
@@ -8,4 +9,6 @@ export class User {
     version?: number;
 
     resident: Resident;
+
+    userRoles: Array<UserRole>;
   }

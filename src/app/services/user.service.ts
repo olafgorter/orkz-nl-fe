@@ -19,10 +19,6 @@ export class UserService {
     private http: HttpClient,
   ) { }
 
-  login(username: String, password: String): Observable<any> {
-    return this.http.post(environment.apiUrl + '/user/login', { username: username, password: password });
-  }
-
   getAllUsers(){
     return this.http.post(environment.apiUrl + '/user/getallusers', { });
 

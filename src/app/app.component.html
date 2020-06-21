@@ -6,8 +6,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="/dashboard">Dashboard</a>
-                <a class="nav-item nav-link" href="/administrator">Administrator</a>
+                <a *ngIf="usr" class="nav-item nav-link" href="/dashboard">Dashboard</a>
+                <a *ngIf="user && isAdmin" class="nav-item nav-link" href="/administrator">Administrator</a>
+                <a *ngIf="usr" class="nav-item nav-link" (click)="logout()">Sign Out</a>
             </div>
         </div>
     </nav>
