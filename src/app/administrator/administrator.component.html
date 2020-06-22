@@ -36,8 +36,37 @@
 
 <div *ngIf="menuRoute === 'residents'">
     <h1>Residents</h1>
+    <!-- <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Fullname</th>
+                <th>Bankaccount</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let resident of residents">
+                <td>{{ resident.fullname }}</td>
+                <td>{{ resident.bankaccount }}</td>
+                <td>{{ resident.room }}</td>
+            </tr>
+        </tbody>
+    </table> -->
 </div>
 
 <div *ngIf="menuRoute === 'charges'">
     <h1>Charges</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- <tr *ngFor="let charge of charges" (click)="openChargeModal(user);"> -->
+            <tr *ngFor="let charge of charges" (click)="openChargeModal(charge);">
+                <td>{{ charge.description }}</td>
+            </tr>
+        </tbody>
+    </table>
 </div>

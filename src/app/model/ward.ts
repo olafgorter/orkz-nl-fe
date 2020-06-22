@@ -1,7 +1,7 @@
 
 export class Ward{
     id?: number;
-    desccription: String;
+    description: string;
     sortorder: number;
     version?: number;
     
