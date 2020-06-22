@@ -25,7 +25,7 @@ export class UserModalComponent implements OnInit{
 
     ngOnInit(){
 
-        this.administratorService.getResidentList().subscribe(res => {
+        this.administratorService.getResidents().subscribe(res => {
             this.residents = res as Array<Resident>;
         });
 

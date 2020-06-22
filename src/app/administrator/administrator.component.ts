@@ -11,6 +11,7 @@ import { UserService } from '../services/user.service';
 import { UserModalComponent } from './modal/usermodal.component';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ChargeModalComponent } from './modal/chargemodal.component';
+import { AdministratorService } from '../services/administrator.service';
 
 @Component({
   selector: 'app-administrator',
@@ -30,7 +31,7 @@ export class AdministratorComponent implements OnInit {
   constructor(  private router:Router, 
                 private route: ActivatedRoute, 
                 private userService: UserService, 
-                private residentService: ResidentService, 
+                private administratorService: AdministratorService,
                 private chargeService: ChargeService, 
                 private modalService: NgbModal
                 ) { }
@@ -40,9 +41,9 @@ export class AdministratorComponent implements OnInit {
       this.users = res as Array<User>;
     });
     
-    // this.residentService.getAllResidents().subscribe(res => {
-    //   this.residents = res as Array<Resident>;
-    // });
+    this.administratorService.getResidents().subscribe(res => {
+      this.residents = res as Array<Resident>;
+    });
 
     this.chargeService.getAllCharges().subscribe(res => {
       this.charges = res as Array<Charge>;
@@ -90,5 +91,8 @@ export class AdministratorComponent implements OnInit {
     });
   }
 
+  openResidentDetails(resident: Resident){
+    this.router.navigateByUrl('/resident/' + resident.id);
+  }
 
 }

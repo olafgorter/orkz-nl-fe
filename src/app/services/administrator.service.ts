@@ -12,8 +12,12 @@ export class AdministratorService {
 
   constructor(private http: HttpClient) { }
 
-  getResidentList(){
+  getResidents(){
     return this.http.post(environment.apiUrl + '/administrator/getResidents', { });
+  }
+
+  getResident(id: number){
+    return this.http.post(environment.apiUrl + '/administrator/getResident', id);
   }
 
   saveUser(user:User) {

@@ -38,7 +38,7 @@
 
 <div *ngIf="menuRoute === 'residents'">
     <h1>Residents</h1>
-    <!-- <table class="table table-striped">
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>Fullname</th>
@@ -47,13 +47,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let resident of residents">
-                <td>{{ resident.fullname }}</td>
-                <td>{{ resident.bankaccount }}</td>
+            <tr *ngFor="let resident of residents" (click)="openResidentDetails(resident);">
+                <td>{{ resident.fullName }}</td>
+                <td>{{ resident.bankAccount }}</td>
                 <td>{{ resident.room }}</td>
             </tr>
         </tbody>
-    </table> -->
+    </table>
 </div>
 
 <div *ngIf="menuRoute === 'charges'">

@@ -1,0 +1,12 @@
+<h1>Resident Details</h1>
+
+<div *ngIf="resident" class="form-group row">
+    <label class="col-sm-4 col-form-label" for="fullName"> {{ 'Full Name' }}</label>
+    <div class="col-sm-8">
+        {{ resident.fullName }}
+    </div>
+    <label class="col-sm-4 col-form-label" for="bankAccount"> {{ 'Bank Account' }}</label>
+    <div class="col-sm-8">
+        {{ resident.bankAccount }}
+    </div>
+</div>
