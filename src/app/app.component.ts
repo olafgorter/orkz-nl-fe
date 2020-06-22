@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     this.usr = this.tokenStorageService.getUser();
-    this.isAdmin = this.authenticationService.isAdmin();
+    this.isAdmin = this.authenticationService.hasRole(this.usr, "ROLE_ADMIN");
   }
 
   logout(){

@@ -49,7 +49,6 @@ export class AuthenticationService implements AuthService {
     let sessionUser = this.tokenStorageService.getUser();
 
     if (sessionUser) {
-      console.log("before user/getuser");
         this.http.post(environment.apiUrl + '/user/getUser', { id: sessionUser.id }).subscribe((res: User) => {
         let user = Object.assign(new User(), res);
         this.admin = this.hasRole(user, 'ROLE_ADMIN');

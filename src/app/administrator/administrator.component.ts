@@ -54,7 +54,7 @@ export class AdministratorComponent implements OnInit {
     this.menuRoute = menuRoute;
   }
 
-  openUserModal(user){
+  openUserModal(user?){
     let modal = this.modalService.open(UserModalComponent, {ariaLabelledBy: 'app-user-modal'});
 
     if(user) {

@@ -53,13 +53,13 @@ export class UserModalComponent implements OnInit{
             return;
         }
 
-        this.askDelete =  false;
+        this.askDelete = false;
         
-        // this.administratorService.deleteUser(this.forumUser.code).subscribe(res => {
-        //     this.activeModal.close("Deleted")
-        //  }, (err) => {
-        //     console.log("Delete failed");
-        //  });
+        this.administratorService.deleteUser(this.user.id).subscribe(res => {
+            this.activeModal.close("Deleted")
+         }, (err) => {
+            console.log("Delete failed");
+         });
     }
 
     onSave(){
@@ -79,14 +79,14 @@ export class UserModalComponent implements OnInit{
         let resident = this.residents.find(obj => obj.id == ef.residentId);
         user.resident = resident;
 
-        // this.administratorService.saveUser(forumUser).subscribe(res => {
-        //     this.forumUser = res as ForumUser;
-        //     this.activeModal.close();
-        // },
-        // (err => {
-        //     console.log("Saving failed");
-        // }
-        // ));
+        this.administratorService.saveUser(user).subscribe(res => {
+            this.user = res as User;
+            this.activeModal.close();
+        },
+        (err => {
+            console.log("Saving failed");
+        }
+        ));
 
     }
 
