@@ -73,7 +73,7 @@ export class AdministratorComponent implements OnInit {
 
   }
 
-  openChargeModal(charge){
+  openChargeModal(charge?){
     let modal = this.modalService.open(ChargeModalComponent, {ariaLabelledBy: 'app_charge_modal'});
 
     if(charge) {

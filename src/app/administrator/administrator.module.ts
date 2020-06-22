@@ -14,7 +14,7 @@ import { AdministratorComponent } from './administrator.component';
     SharedModule,
   ],
   providers: [],
-  bootstrap: [UserModalComponent ]
+  bootstrap: [UserModalComponent, ChargeModalComponent ]
 
 })
 

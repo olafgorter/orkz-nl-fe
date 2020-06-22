@@ -58,6 +58,8 @@
 
 <div *ngIf="menuRoute === 'charges'">
     <h1>Charges</h1>
+    <button class="btn btn-sm btn-primary" (click)="openChargeModal()">{{ 'Add Charge' }}</button>
+    <br><br>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -65,7 +67,6 @@
             </tr>
         </thead>
         <tbody>
-            <!-- <tr *ngFor="let charge of charges" (click)="openChargeModal(user);"> -->
             <tr *ngFor="let charge of charges" (click)="openChargeModal(charge);">
                 <td>{{ charge.description }}</td>
             </tr>

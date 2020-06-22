@@ -43,11 +43,13 @@ export class ChargeModalComponent implements OnInit{
 
         this.askDelete =  false;
         
-        // this.administratorService.deleteUser(this.forumUser.code).subscribe(res => {
-        //     this.activeModal.close("Deleted")
-        //  }, (err) => {
-        //     console.log("Delete failed");
-        //  });
+        this.administratorService.deleteCharge(this.charge.id).subscribe(res => {
+            console.log("Deleted");
+            
+            this.activeModal.close();
+         }, (err) => {
+            console.log("Delete failed");
+         });
     }
 
     onSave(){
@@ -62,14 +64,14 @@ export class ChargeModalComponent implements OnInit{
         
         charge.description = ef.description;
         
-        // this.administratorService.saveUser(forumUser).subscribe(res => {
-        //     this.forumUser = res as ForumUser;
-        //     this.activeModal.close();
-        // },
-        // (err => {
-        //     console.log("Saving failed");
-        // }
-        // ));
+            this.administratorService.saveCharge(charge).subscribe(res => {
+            this.charge = res as Charge;
+            this.activeModal.close();
+        },
+        (err => {
+            console.log("Saving failed");
+        }
+        ));
 
     }
 
