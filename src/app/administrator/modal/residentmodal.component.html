@@ -1,0 +1,69 @@
+<div class="modal-header">
+    <h4 *ngIf="!resident" class="modal-title" id="modal-basic-title">{{ 'Add' }}&nbsp;...</h4>
+    <h4 *ngIf="resident" class="modal-title" id="modal-basic-title">{{ 'Edit' }}&nbsp;...</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onDismiss()">
+    <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+
+    <form [formGroup]="editForm">
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" for="fullname"> {{ 'Fullname' }}</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="fullname" formControlName="fullname">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" for="room"> {{ 'Room' }}</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="room" formControlName="room">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label" for="bankaccount"> {{ 'Bankaccount' }}</label>
+            <div class="col-sm-8">
+                <input class="form-control" type="text" id="bankaccount" formControlName="bankaccount">
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div class="modal-footer">
+
+    <div class="container">
+        <div class="row" *ngIf="!askDelete">
+            <div class="col text-left">
+                <button [hidden]="!resident" class="btn btn-danger" type="button" (click)="askDelete=true">
+                    <span> {{ "Delete" }} </span>
+                </button>
+            </div>
+
+            <!-- <div class="col text-right">
+                <div class="btn-group btn-group-toggle" role="group" style="width: auto">
+                    <button class="btn btn-outline-secondary" type="button" (click)="onDismiss()">{{ "Cancel" }}</button>
+                    <button [disabled]="!editForm.valid" class="btn btn-primary" type="button" (click)="onSave()">
+                        <span> {{ "Save" }} </span>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+
+        <div class="row" *ngIf="askDelete">
+            <div class="col text-right">
+                <span>{{ 'About to delete' }} </span>
+                <div class="btn-group btn-group-toggle" role="group" style="width: auto">
+                    <button class="btn btn-outline-secondary" type="button" (click)="askDelete=false">{{ "Cancel" }}</button>
+                    <button class="btn btn-success" type="button" (click)="onDelete()">{{ "Delete" }}</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+</div>

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../model/user';
 import { Charge } from '../model/charge';
+import { Resident } from '../model/resident';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,14 @@ export class AdministratorService {
 
   getResident(id: number){
     return this.http.post(environment.apiUrl + '/administrator/getResident', id);
+  }
+
+  saveResident(resident:Resident) {
+    return this.http.post(environment.apiUrl + '/administrator/saveResident', resident);
+  }
+
+  deleteResident(residentId: number) {
+    return this.http.post(environment.apiUrl + '/administrator/deleteResident', { residentId: residentId });
   }
 
   saveUser(user:User) {

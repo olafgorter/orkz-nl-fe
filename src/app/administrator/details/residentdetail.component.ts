@@ -4,6 +4,8 @@ import { TokenStorageService } from '../../services/token-storage.service';
 import { Resident } from 'src/app/model/resident';
 import { ResidentService } from 'src/app/services/resident.service';
 import { AdministratorService } from 'src/app/services/administrator.service';
+import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResidentModalComponent } from '../modal/residentmodal.component';
 
 @Component({
   selector: 'app-residentdetail',
@@ -13,7 +15,8 @@ import { AdministratorService } from 'src/app/services/administrator.service';
 export class ResidentDetailComponent implements OnInit {
 
   constructor(private router:Router, private route: ActivatedRoute, private tokenStorageService: TokenStorageService,
-               private residentService: ResidentService, private administratorService: AdministratorService ) { }
+               private residentService: ResidentService, private administratorService: AdministratorService,
+               private modalService: NgbModal ) { }
 
   residentId: number;
   resident: Resident;
@@ -38,5 +41,23 @@ export class ResidentDetailComponent implements OnInit {
     } 
     return Number(text);
   }
+
+  openResidentModal(resident?){
+    let modal = this.modalService.open(ResidentModalComponent, {ariaLabelledBy: 'app-resident-modal'});
+
+    if(resident) {
+      modal.componentInstance.resident = resident;
+    }
+
+    modal.result.then((result) => {
+      window.location.reload();
+      
+    }, (reason) => {
+      if(reason === 'Deleted') {
+        window.location.reload();
+      }
+    });
+
+  };
 
 }
