@@ -50,7 +50,7 @@
             <tr *ngFor="let resident of residents" (click)="openResidentDetails(resident);">
                 <td>{{ resident.fullName }}</td>
                 <td>{{ resident.bankAccount }}</td>
-                <td>{{ resident.room }}</td>
+                <td>{{ 'Ward:' }} {{ resident.room.ward?.description }} {{ ' - Room #'}} {{ resident.room.roomNumber }}</td>
             </tr>
         </tbody>
     </table>

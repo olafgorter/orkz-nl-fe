@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AdministratorService } from 'src/app/services/administrator.service';
 import { User } from 'src/app/model/user';
 import { Resident } from 'src/app/model/resident';
+import { Room } from 'src/app/model/room';
 
 @Component({
   selector: 'app-resident-modal',
@@ -20,10 +21,17 @@ export class ResidentModalComponent implements OnInit{
     editForm: FormGroup;
     askDelete = false;
 
+    rooms: Array<Room> = [];
+
     constructor(private modalService: NgbModal, private activeModal: NgbActiveModal,
                 private formBuilder: FormBuilder, private administratorService: AdministratorService) { }
 
     ngOnInit(){
+
+        this.administratorService.getRooms().subscribe(res => {
+            let rooms = res as Array<Room>;
+            //console.log(rooms);
+        });
 
         this.administratorService.getResidents().subscribe(res => {
             this.residents = res as Array<Resident>;
@@ -31,15 +39,15 @@ export class ResidentModalComponent implements OnInit{
 
         this.editForm = this.formBuilder.group({
             fullname: [null, Validators.required],
-            room: [null, Validators.required],
             bankaccount: [null, Validators.required],
+            room: [null, Validators.required],
         });
 
         if (this.resident) {
             this.editForm.patchValue({
                 fullname: this.resident.fullName,
-                room: this.resident.room,
                 bankaccount: this.resident.bankAccount,
+                room: this.resident.room,
             });
 
         } else {
@@ -60,33 +68,32 @@ export class ResidentModalComponent implements OnInit{
          });
     }
 
-    // onSave(){
-    //     let ef = this.editForm.value;
+    onSave(){
+        let ef = this.editForm.value;
 
-    //     let resident;
-    //     if(this.resident){
-    //         resident = this.resident;
-    //     } else {
-    //         resident = new Resident();
-    //     }
+        let resident;
+        if(this.resident){
+            resident = this.resident;
+        } else {
+            resident = new Resident();
+        }
         
-    //     resident.fullname = ef.fullname;
-    //     resident.room = ef.room;
-    //     resident.bankaccount = ef.bankaccount;
+        resident.fullname = ef.fullname;
+        resident.room = ef.room;
+        resident.bankaccount = ef.bankaccount;
 
-    //     let resident = this.residents.find(obj => obj.id == ef.residentId);
-    //     user.resident = resident;
+        resident = this.residents.find(obj => obj.id == ef.residentId);
 
-    //     this.administratorService.saveResident(resident).subscribe(res => {
-    //         this.user = res as User;
-    //         this.activeModal.close();
-    //     },
-    //     (err => {
-    //         console.log("Saving failed");
-    //     }
-    //     ));
+        this.administratorService.saveResident(resident).subscribe(res => {
+            this.resident = res as Resident;
+            this.activeModal.close();
+        },
+        (err => {
+            console.log("Saving failed");
+        }
+        ));
 
-    // }
+    }
 
     onDismiss() {
         this.activeModal.dismiss('Dismissed!');

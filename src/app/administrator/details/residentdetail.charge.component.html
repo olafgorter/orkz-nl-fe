@@ -1,0 +1,12 @@
+<h4>{{ 'Charges' }}
+    <button class="btn btn-sm btn-primary" (click)="openChargeModal()">{{ 'Add' }}</button>
+</h4>
+
+<div *ngIf="resident">
+    <div *ngFor="let residentCharge of residentCharges">
+        <div class="row col-sm-8">
+            {{ residentCharge.charge.description }}
+        </div>
+    </div>
+</div>
+ 

@@ -44,4 +44,8 @@ export class AdministratorService {
   deleteCharge(chargeId: number) {
     return this.http.post(environment.apiUrl + '/administrator/deleteCharge', { chargeId: chargeId });
   }
+
+  getRooms(){
+    return this.http.post(environment.apiUrl + '/administrator/getRooms', {});
+  }
 }

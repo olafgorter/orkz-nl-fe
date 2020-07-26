@@ -20,7 +20,11 @@ export class ResidentService {
   ) { }
 
   getAllResidents(){
-    return this.http.post(environment.apiUrl + '/resident/getallresidents', { });
-
+    return this.http.post(environment.apiUrl + '/resident/getAllResidents', { });
   }
+
+  getChargesByResident(residentId: number) {
+    return this.http.post(environment.apiUrl + '/resident/getChargesByResident', { residentId: residentId });
+  }
+
 }

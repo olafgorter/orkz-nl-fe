@@ -5,6 +5,7 @@ import { ChargeModalComponent } from './modal/chargemodal.component';
 import { AdministratorComponent } from './administrator.component';
 import { ResidentDetailComponent } from './details/residentdetail.component';
 import { ResidentModalComponent } from './modal/residentmodal.component';
+import { ResidentDetailChargeComponent } from './details/residentdetail.charge.component';
 
 @NgModule({
   declarations: [
@@ -13,13 +14,14 @@ import { ResidentModalComponent } from './modal/residentmodal.component';
     ChargeModalComponent,
     ResidentDetailComponent,
     ResidentModalComponent,
+    ResidentDetailChargeComponent,
 
   ],
   imports: [
     SharedModule,
   ],
   providers: [],
-  bootstrap: [UserModalComponent, ChargeModalComponent, ResidentModalComponent ]
+  bootstrap: [UserModalComponent, ChargeModalComponent, ResidentModalComponent, ResidentDetailChargeComponent, ]
 
 })
 
